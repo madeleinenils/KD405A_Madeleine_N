@@ -1,0 +1,9 @@
+
+1.Mellan Malmö - Lund
+2.Om man skriver &NoOf=5
+3.<Journeys> beskriver alla resor mellan Malmö och Lund 
+<Journey> beskriver om en specifik resa mellan Malmö och Lund
+<RouteLinks> håller alla RouteLink
+<RouteLink> beskriver information om en resa, pris, avgångstid, datum etc. 
+4.<NoOfChanges> som ligger i Journey
+5.<PriceType> finns inte i API
