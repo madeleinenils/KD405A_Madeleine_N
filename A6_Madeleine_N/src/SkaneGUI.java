@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
+import java.awt.Color;
+import javax.swing.JLabel;
 
 public class SkaneGUI extends JFrame {
 
@@ -53,6 +55,7 @@ public class SkaneGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 609, 392);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 0, 0));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -60,13 +63,15 @@ public class SkaneGUI extends JFrame {
 		JButton btnNewButton = new JButton("Sök station");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			Thread t=new StationThread(p,g);
+			t.start();
 			}
 		});
-		btnNewButton.setBounds(136, 111, 100, 29);
+		btnNewButton.setBounds(153, 111, 100, 29);
 		contentPane.add(btnNewButton);
 		
 		Searchfield = new JTextField();
-		Searchfield.setBounds(6, 111, 130, 26);
+		Searchfield.setBounds(23, 111, 130, 26);
 		contentPane.add(Searchfield);
 		Searchfield.setColumns(10);
 		
@@ -78,21 +83,23 @@ public class SkaneGUI extends JFrame {
 		scrollPane.setViewportView(textArea1);
 		
 		toField = new JTextField();
-		toField.setBounds(248, 111, 130, 26);
+		toField.setBounds(302, 111, 130, 26);
 		contentPane.add(toField);
 		toField.setColumns(10);
 		
 		fromField = new JTextField();
-		fromField.setBounds(248, 83, 130, 26);
+		fromField.setBounds(302, 62, 130, 26);
 		contentPane.add(fromField);
 		fromField.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Sök resa");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Thread d=new JourneyThread(p,g);
+				d.start();
 			}
 		});
-		btnNewButton_1.setBounds(390, 111, 117, 29);
+		btnNewButton_1.setBounds(458, 111, 117, 29);
 		contentPane.add(btnNewButton_1);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -101,5 +108,13 @@ public class SkaneGUI extends JFrame {
 		
 		textArea_2 = new JTextArea();
 		scrollPane_1.setViewportView(textArea_2);
+		
+		JLabel lblFrn = new JLabel("Från");
+		lblFrn.setBounds(265, 67, 61, 16);
+		contentPane.add(lblFrn);
+		
+		JLabel lblTill = new JLabel("Till");
+		lblTill.setBounds(265, 116, 61, 16);
+		contentPane.add(lblTill);
 	}
 }
